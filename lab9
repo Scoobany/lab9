@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+class ZadanieNa3
+{
+public:
+    int macierz[10][10];
+
+    void zapiszMacierz()
+    {
+        for (int i = 1; i <= 10; i++)
+            for (int j = 1; j <= 10; j++)
+                macierz[i - 1][j - 1] = (i - 1) * 10 + j;
+                    
+    }
+
+    void wyswietlMacierz()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            std::cout << "[";
+            for (int j = 0; j < 10; j++)
+            {
+                if (macierz[i][j] < 10)
+                    std::cout << "  ";
+                else if(macierz[i][j] < 100)
+                    std::cout << " ";
+
+                std::cout << macierz[i][j];            
+
+                if (j != 9)
+                    std::cout << ", ";
+            }
+            std::cout << "]" << std::endl;
+        }
+    }
+
+    void wypiszPoIndeksie(int x, int y)
+    {
+        std::cout << "Macierz[" << x << ", " << y << "] = " << macierz[x][y] << std::endl;
+    }
+
+    static void iloczymLosowych()
+    {
+        int a = rand() % 100 - 50;
+        int b = rand() % 100 - 50;
+
+        std::cout << a << " * " << b << " = " << a * b << std::endl;
+    }
+};
+
+int main()
+{
+    srand(time(NULL));
+
+    ZadanieNa3 zadanieNa3;
+
+    zadanieNa3.zapiszMacierz();
+    zadanieNa3.wyswietlMacierz();
+    zadanieNa3.wypiszPoIndeksie(3, 4);
+    zadanieNa3.iloczymLosowych();
+
+    return 0;
+}
